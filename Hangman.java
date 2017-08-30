@@ -16,28 +16,28 @@ import java.util.Scanner;
 public class Hangman {
 
     // Word bank for normal Hangman
-    private static final String[] _WORD_BANK = new String[] {
+    private static final String[] WORD_BANK = new String[] {
         "TELEVISION", "LIBRARY", "FINISH", "PAYMENT", "REVIEW",
         "DOWNHILL", "PERFECT", "MISTAKE", "LETTER", "CORRECT"
     };
 
     // Word bank for modified Hangman
-    private static final String[] _ASK_WORD_BANK = new String[] {
+    private static final String[] ASK_WORD_BANK = new String[] {
         "BEAUTIFUL", "CUTE", "GORGEOUS", "STUNNING", "CAPTIVATING" 
     };
 
     // Modes that trigger modified Hangman behavior
-    private static final HashSet<String> _ASK_MODES = new HashSet<>(
+    private static final HashSet<String> ASK_MODES = new HashSet<>(
         Arrays.asList("FILE", "MESSAGE")
     );
 
     private static final int MAX_MISTAKES = 6;
     private static final Random random = new Random();
 
-    private String _mode;
+    private String mode;
 
     public Hangman(String mode) {
-        _mode = mode;
+        this.mode = mode;
     }
 
     /**
@@ -48,10 +48,10 @@ public class Hangman {
         boolean play = true;
 
         String[] wordBank;
-        if (_ASK_MODES.contains(_mode.toUpperCase())) {
-            wordBank = _ASK_WORD_BANK;
+        if (ASK_MODES.contains(mode.toUpperCase())) {
+            wordBank = ASK_WORD_BANK;
         } else {
-            wordBank = _WORD_BANK;
+            wordBank = WORD_BANK;
         }
 
         System.out.println("Welcome to Hangman!");
@@ -150,7 +150,7 @@ public class Hangman {
     }
 
     private boolean queryPlayAgain(Scanner sc, boolean success) {
-        if (_ASK_MODES.contains(_mode.toUpperCase())) {
+        if (ASK_MODES.contains(mode.toUpperCase())) {
             if (success) {
                 return false;
             } else {
