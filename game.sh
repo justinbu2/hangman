@@ -15,11 +15,6 @@ handle_sig_int() {
     exit 1
 }
 
-if [ $# -lt 1 ]; then
-    show_usage
-    exit 1
-fi
-
 # Default values
 mode="normal"
 user="Justin"
