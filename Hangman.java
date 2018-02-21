@@ -2,8 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Hangman game...with a twist ;)
@@ -61,7 +64,7 @@ public class Hangman {
             System.out.printf("This word contains %d letters:\n", word.length());
 
             // Set up data structure for storing word
-            HashMap<Character, ArrayList<Integer>> wordMap = new HashMap<>();
+            Map<Character, List<Integer>> wordMap = new HashMap<>();
             for (int i = 0; i < word.length(); i++) {
                 char c = word.charAt(i);
                 if (!wordMap.containsKey(c)) {
@@ -69,7 +72,7 @@ public class Hangman {
                 }
                 wordMap.get(c).add(i);
             }
-            HashSet<Character> guesses = new HashSet<>();
+            Set<Character> guesses = new HashSet<>();
             int incorrectAttempts = 0;
             boolean success = false;
             boolean[] corrects = new boolean[word.length()];
@@ -109,15 +112,15 @@ public class Hangman {
     }
 
     private boolean makeGuess(Scanner sc, String word,
-                              HashMap<Character, ArrayList<Integer>> wordMap,
-                              HashSet<Character> guesses,
+                              Map<Character, List<Integer>> wordMap,
+                              Set<Character> guesses,
                               boolean[] corrects) {
         showProgress(word, corrects);
 
         char guess = getGuess(sc, guesses);
         guesses.add(guess);
         if (word.indexOf(guess) != -1) {
-            ArrayList<Integer> letterIndices = wordMap.get(guess);
+            List<Integer> letterIndices = wordMap.get(guess);
             for (int i = 0; i < letterIndices.size(); i++) {
                 corrects[wordMap.get(guess).get(i)] = true;
             }
@@ -127,7 +130,7 @@ public class Hangman {
         }
     }
 
-    private char getGuess(Scanner sc, HashSet<Character> guesses) {
+    private char getGuess(Scanner sc, Set<Character> guesses) {
         String input;
         do {
             input = sc.nextLine().toUpperCase();
@@ -135,7 +138,7 @@ public class Hangman {
         return input.charAt(0);
     }
 
-    private boolean isValidGuess(String input, HashSet<Character> guesses) {
+    private boolean isValidGuess(String input, Set<Character> guesses) {
         if (input.length() == 0) {
             return false;
         } else if (input.length() != 1
@@ -167,7 +170,7 @@ public class Hangman {
         }
         System.out.println(" Would you like to play again? (yes/no)");
         String response = sc.nextLine().toUpperCase();
-        while (!(response.equals("YES") || response.equals("NO"))) {
+        while (!(response.startsWith("Y") || response.startsWith("N"))) {
             System.out.println("Please type 'yes' or 'no.'");
             response = sc.nextLine().toUpperCase();
         }
