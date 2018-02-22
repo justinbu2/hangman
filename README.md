@@ -19,7 +19,7 @@ First clone this repo by going into your command line and running
 git clone https://github.com/justinbu2/hangman.git
 ```
 
-Then simply run `./game.sh -m MODE -u USER`.
+Then `cd hangman` and simply run `./game.sh -m MODE -u USER`.
 * `MODE` can be `file`, `message`, or `normal`. `file` writes the input number to a file, `message` sends a pre-written text message directly to the input number, and `normal` just runs a normal version of Hangman. The game defaults to `normal` if no mode option is provided.
 * `USER` specifies the user's name. This defaults to my name (Justin) if no user option is provided.
 
