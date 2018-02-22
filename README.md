@@ -13,7 +13,13 @@ And it did. And now it can help you.
 A simple command-line Hangman game built with a little Bash, Java, and a dash of AppleScript. Currently the `message` mode only works on macOS machines with iMessage properly configured.
 
 ## How to play
-Just run `./game.sh -m MODE -u USER`.
+First clone this repo by going into your command line and running
+
+```
+git clone https://github.com/justinbu2/hangman.git
+```
+
+Then simply run `./game.sh -m MODE -u USER`.
 * `MODE` can be `file`, `message`, or `normal`. `file` writes the input number to a file, `message` sends a pre-written text message directly to the input number, and `normal` just runs a normal version of Hangman. The game defaults to `normal` if no mode option is provided.
 * `USER` specifies the user's name. This defaults to my name (Justin) if no user option is provided.
 
